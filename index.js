@@ -10,6 +10,10 @@ app.use(cors({
 }));
 
 app.get('/:query', (req, res) => {
+    const origin = req.headers.origin;  // Get the Origin header
+    console.log('Supplied origin:', origin);  // Log the origin
+
+
     const query = req.params.query;  // Change this to req.params.query to get the correct URL parameter
     axios.get(`https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&q=${query}`)
     .then(response => {
